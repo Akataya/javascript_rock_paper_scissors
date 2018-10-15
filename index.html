@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">      
+    <title>Rock, Paper, Scissors (console version)</title>
+      <script>
+        const getUserChoice = userInput => {
+          userInput = userInput.toLowerCase();
+          if (userInput === 'rock' || userInput === 'paper' || userInput === 'scissors' || userInput === 'bomb'){
+            return userInput;
+          } else {
+            console.log('Please enter the correct option.');
+          }
+        };
+
+        const getComputerChoice = () => {
+            let number = Math.floor(Math.random() * 3);
+          if (number === 0){
+            return 'rock';
+          } else if (number === 1){
+            return 'paper';
+          } else if (number === 2) {
+            return 'scissors';
+          }
+        };
+
+        function determineWinner(userChoice, computerChoice){
+          const computerWon = 'Sorry, computer won.';
+          const userWon = 'Congratulations, you won.';
+
+          if (userChoice === computerChoice){
+            return 'It\'s a tie';
+          } else if (userChoice === 'bomb'){
+              return userWon;
+          } else {
+            if(userChoice === 'rock'){
+              if(computerChoice === 'paper'){
+                return computerWon;
+              } else {
+                return userWon;
+              }
+            } else if (userChoice === 'paper'){
+              if (computerChoice === 'scissors'){
+                return computerWon;
+              } else {
+                return userWon;
+              }
+            } else if (userChoice === 'scissors'){
+              if(computerChoice === 'rock'){
+                return computerWon;
+              } else{
+                return userWon;
+              }
+            } 
+          }
+        };
+
+        const playGame = () => {
+          const userChoice = getUserChoice('rock');
+          const computerChoice = getComputerChoice();
+          console.log('You threw: ' + userChoice);
+          console.log('The computer threw: ' + computerChoice);
+          console.log(determineWinner(userChoice, computerChoice));
+        };
+
+        playGame();
+      </script>
+  </head>
+    
+  <body>
+  </body>
+</html>
+
